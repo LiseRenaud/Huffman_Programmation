@@ -1,24 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import argparse
-
-
-
-class HuffNode:
-    def __init__(self, char=None, frequency=0):
-        self.myChar = char
-        self.myFrequency = frequency
-        self.myLeft = None
-        self.myRight = None
-
-    
+from PriorityQueue import PriorityQueue
 
 freq = {"a":7, "b":1, "c":3, "d":4, "e":12, "f":1, "g":1, "h":1, "i":6, "j":0, 
         "k":0, "l":5, "m":3, "n":6, "o":5, "p":2, "q":0, "r":6, "s":6, "t":6, 
         "u":4, "v":1, "w":0, "x":0, "y":0, "z":0, "à":0, "é":2, "è":0, ",":2, 
         "-":0, ".":1, ";":0, "!":0, "?":0, "\n":0, "<sp>":15}
-
-
 
 def encrypt(text):
     pass
