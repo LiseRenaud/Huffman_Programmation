@@ -3,10 +3,9 @@ import heapq
 class PriorityQueue:
     def __init__(self):
         self._queue = []
-        self._index = 0  # To maintain order for same-priority items
+        self._index = 0
 
     def push(self, item, priority):
-        # Lower priority value means higher priority
         heapq.heappush(self._queue, (priority, self._index, item))
         self._index += 1
 
