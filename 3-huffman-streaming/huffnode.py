@@ -1,9 +1,11 @@
 class HuffNode:
-    def __init__(self, char, freq, left=None, right=None):
+    def __init__(self, char=None, weight=0, parent=None, order=0):
         self.char = char
-        self.freq = freq
-        self.left = left
-        self.right = right
+        self.weight = weight
+        self.parent = parent
+        self.left = None
+        self.right = None
+        self.order = order
 
-    def __lt__(self, other):
-        return self.freq < other.freq
+    def is_leaf(self):
+        return self.left is None and self.right is None
