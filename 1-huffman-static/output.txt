@@ -1,1 +1,240 @@
-bonjour je suis en train de tester la compression huffman
+e la désinformation à la cyberattaque anatomie des conflits hybrides modernes
+
+
+présentation des références
+synthèse des problématiques du sujet
+conclusion résumant les résultats et présentant des perspectives
+bibliographie
+le document doit tre autonome ne nécessite pas de lire les autres jalons
+ pages en ate
+    ?    
+
+bstract
+epuis ces dernières années, le monde est de plus en plus fréquemment touché par des guerres se déroulant sur plusieurs terrains  terre, mer, air, et cyber. e dernier nous intéresse plus particulièrement, puisquil est lélément permettant de nommer ces conflits guerres hybrides. 
+
+a lutte informatique offensive  est lun des trois piliers des conflits hybrides. n sabotant des systèmes critiques ou en exfiltrant des données classifiées, il devient possible de paralyser les réseaux adversaires ainsi que danticiper les actions dun autre tat. ette dernière partie présentera létat de lart de nos recherches sur la  comme outil de puissance étatique agissant dans la zone floue des relations internationales.
+
+
+
+
+influence constitue un levier des conflits hybrides  en manipulant ou en falsifiant linformation, il devient possible dinstaller le doute et lincertitude, permettant ainsi de sintroduire dans les esprits adverses. es piliers des guerres hybrides sont ceux que lon étudiera au cours de notre état de lart.    
+
+ntroduction
+
+e papier définit ce que sont les guerres hybrides en y présentant ses  domaines de différenciation que sont lattaque, la défense et linfluence. es attaques sont menées par des groupes comme les , des organisations criminelles, ou encore des tats. a défense, elle, peut tre active et menée par des contre-opérations. lle possède notamment trois actions défensives  dégradation, démantèlement, dissuasion. influence se régit par des actions de désinformation auprès de citoyens dun tat adverse dans le but de perturber la confiance et les avis, de semer le doute, ou encore de polariser la population.
+
+- lignes
+
+- lignes
+
+u cours du temps, nous avons pu observer que les fake news se sont de plus en plus répandues, entre autres à laide des réseaux sociaux. ous avons donc souhaité étudier le fonctionnement de celles-ci, leur propagation, et leur impact sur leurs cibles. ar exemple, nous avons pu relever que lors des élections présidentielles américaines de , les électeurs américains ont rencontré une à trois fake news liées à des sujets politiques. ussi, nous avons remarqué que les utilisateurs arrivent majoritairement à détecter les fausses informations, mais bon nombre dentre elles ne sont pas certaines de leur réponse.
+
+ans ce document, nous présenterons les trois principaux volets des guerres hybrides en commenant par les acteurs impliqués, les types dattaques quils mènent et les moyens quils mobilisent, en lien avec le contexte géopolitique actuel . ous aborderons ensuite les dispositifs de défense envisageables face à ces menaces , puis nous analyserons, sur le plan social, les effets de linfluence extérieure cherchant à déstabiliser les citoyens .
+
+éthodologie
+fin de déterminer nos documents de référence, nous avons sélectionné la méthode  referred eporting tems for ystematic eviews and eta-nalyses. es étapes suivies afin dobtenir les documents de référence sont les suivantes 
+dentification  recherche dans les bases de données avec mots-clés et critères définis en amont voir plus haut dans additional keywords template latex
+riblage  élimination des doublons et des articles non pertinents
+ligibilité  application des critères dinclusionexclusion
+nclusion finale  sélection des études retenues pour lanalyse
+xtraction des données  collecte des informations clés
+nalyse et synthèse  interprétation critique
+
+ous avons élaboré la liste dinclusion darticles suivante afin deffectuer une sélection relativement exhaustive qui nous permette daborder différents thèmes du sujet 
+es articles sont sélectionnés à partir des mots-clés
+es articles de moins de  ans doivent généralement tre cités plus de  fois
+es articles de  ans et plus doivent tre généralement cités plus de  fois
+es articles doivent idéalement tre relus par les pairs
+es articles ne doivent pas traiter le sujet dune manière similaire à un autre article déjà sélectionné, excepté dans le cas o les résultats sont complémentaires ou contradictoires on comparera alors les deux articles pour définir les atouts de chacun dentre eux
+es articles qui ne satisfont pas les critères cités précédemment sont exclus, excepté dans le cas o le nombre darticles nécessaires à la compréhension du sujet est insuffisant
+
+a démarche a été adaptée aux trois domaines étudiés , , , avec des mots-clés spécifiques à chacun.
+
+our la , les mots-clés utilisés furent, entre autres  campagne cyber, conflit hybride, rapport officiel et attribution. a plupart des articles sélectionnés parlaient uniquement des campagnes cyber des tats-nis ou de la ussie, mais pas de la rance. près avoir choisi un article illustrant le cyber dans le monde, jai donc d ajouter le filtre urope afin de me concentrer uniquement sur les conflits hybrides touchant directement l et la rance.
+
+
+
+our la , les mots-clés utilisés incluent notamment  fake news, disinformation, astroturfing, bots et detection.
+
+es articles sélectionnés ont ensuite été regroupés par thématiques diffusion, bots, désinformation, politique, détection et psychologie. ertains articles couvrent plusieurs thématiques simultanément. analyse thématique permet didentifier les axes dominants des articles étudiés. 
+
+éveloppement
+
+utte nformatique offensive 
+a lutte informatique offensive  désigne lensemble des capacités cyber quun tat se donne pour agir sur les systèmes adverses afin de détecter, perturber ou neutraliser des menaces visant ses intérts souverains. lle combine infiltration, exploitation de vulnérabilités et actions de coercition pour entraver les capacités dune entité ennemie. objectif principal de la  est de faire un affrontement dans une zone grise, un espace sans frontière ne permettant pas de qualifier une source de menace permettant, entre autres, ainsi de mener des actions de déstabilisation sans déclencher un conflit armé conventionnel. es articles que nous allons présenter, permettent de dillustrer ces logiques et dévaluer la posture européenne face à ces enjeux.
+après larticle de arknett  meets , la  sinscrit comme des actions à long terme notamment à travers des  campagnes cyber , définies comme une suite dopérations visant à affaiblir un adversaire sur plusieurs fronts simultanément. i une opération offensive désigne une action ponctuelle, il ne faut pas la confondre avec la  cyberguerre  qui agit plutt comme un second vecteur de puissance au sein dune stratégie hybride. e cadre permet de comprendre pourquoi un adversaire a recours à la , non pas pour obtenir une victoire, mais pour créer un effet dusure. ependant il faut noter que larticle  reste théorique et ne détaille pas les mécanismes dintégration technique. l pose les bases pour identifier la  comme un outil de combat moderne au mme titre que les terrains conventionnels comme le terrestres, maritimes ou aériens.
+évolution des technologies a permis daméliorer la portée et lusage des des attaques offensives. article  nous apprend que la  suit trois logiques dintégration majeures  la substitution, la complémentarité et la coercition. a substitution est utilisée lorsquune opération cyber permet datteindre un objectif militaire sans avoir des retombées politiques ou diplomatiques ou quand une frappe physique est trop risqué comme lattaque américaine contre les systèmes de renseignement iraniens.  linverse, la complémentarité renforce des opérations déjà en cours comme le malware otetya utilisé par la ussie en  pour paralyser les infrastructures ukrainiennes en plus des opérations militaires dans le onbass. et article est pertinent car il montre comment linformatique et le cyberespace deviennent une arme qui peut tre plus efficace que ceux physique. ependant, létude se concentre sur des cas de éviathan à deux ttes, comme le sont les  et la ussie sma halla,  o ltat est tout simplement une puissance technologique. 
+
+article  de iannopoulos et al nous apporte une dimension plus institutionnelle de la , notamment en classant les menaces hybrides en treize vecteurs différents, intégrant le cyber comme un des leviers principaux pour effectuer de la déstabilisation. ette classification fournit le langage commun nécessaire aux institutions européennes pour qualifier les agressions à travers trois phases morage, déstabilisation et coercition. ependant, larticle  de ungwirth et al. révèle le vide doctrinal des institutions européennes  la réponse de l reste quasi exclusivement centrée sur la défense passive et la résilience. e silence institutionnel sur le volet offensif crée une asymétrie de pouvoir préoccupante, o les adversaires agissent en zone grise avec la certitude quils ne risquent aucune riposte numérique coordonnée de la part de lnion.
+larticle  de todolnik  traite de cas particuliers permettant de briser ce plafond de verre en documentant des opérations concrètes contre six tats membres. es résultats indiquent que la  est une réalité quotidienne sur le sol européen. ar exemple, en mai ,  opérateurs dénergie danois ont été compromis dans une opération de reconnaissance préalable à un sabotage, tandis quen stonie, lunité  du  service de renseignement usse a exfiltré  o de données classifiées. et article montre comment des campagnes comme hostwriter en ituanie combinent intrusion et influence. e réel avantage de cet article est quil se base sur les s nationaux pour nommer le danger là o les rapports officiels restent souvent diplomatiquement prudents. 
+out au long des recherches, nous avons pu observer que la  nest plus une capacité optionnelle, mais une des principales forces contemporaines. lle permet aux puissances étatiques dagir efficacement dans une zone grise, o lattribution est incertaine et la riposte impossible. ous avons compris que si les technologies facilitent les opérations de substitution ou de complémentarité, leur succès repose également sur lexploitation des failles doctrinales et législatives de ladversaire.
+n des enjeux majeurs qui sort est celui de la dissuasion cyber. omme le souligne la comparaison entre la théorie des  campagnes  montrée dans larticle  et la réalité des attaques subies par les membres de l , la résilience passive ne suffit plus à garantir la souveraineté. asymétrie constatée souligne que labsence de posture offensive coordonnée entre tous les tats européen laisse le champ libre aux puissances étrangères tel que les ig state. 
+ lavenir, la protection des infrastructures critiques et des intérts nationaux dépendra donc de la capacité des tats à sortir de la seule logique de protection pour sarmer dune véritable capacité de réponse, capable de peser sur le cot politique, diplomatique et technique des agressions subies dans le cyberespace.
+n somme, la lutte informatique offensive redéfinit la souveraineté des états. lle impose aux démocraties de repenser leurs cadres juridiques pour ne plus subir les règles dun conflit permanent et invisible mais aux conséquences bien réelles pour la sécurité collective.
+
+
+
+
+
+utte nformatique défensive
+
+
+
+utte nformatique dinfluence 
+
+éfinitions
+a lutte informatique dinfluence désigne lensemble des actions menées dans le cyberespace pour détecter, contrer ou neutraliser des opérations visant à manipuler lopinion, le comportement ou la perception dune population. lle combine analyse informationnelle, cybersécurité et communication stratégique pour préserver lintégrité de linformation. objectif principal de la  est de contrer les tentatives de déstabilisation menées par ladversaire à lencontre de la population, afin de préserver la confiance collective et de limiter les effets de manipulation visant ltat. es articles sur lesquels nous nous appuierons nous permettront de décrire précisément la situation, et comment y remédier.
+
+après larticle , une fake news est une information construite en imitant la forme des médias traditionnels mais qui ne respecte pas les normes éditoriales ni les processus de vérification de linformation utilisés habituellement. i une fake news désigne du contenu trompeur à lapparence journalistique, il ne faut pas la confondre avec la désinformation qui est une information fausse diffusée volontairement dans le but de tromper, manipuler ou influencer, ou bien avec la mésinformation qui est information fausse ou inexacte diffusée sans intention de nuire. e sont cependant des notions complémentaires entre elles, puisque les fake news et la désinformation touchent majoritairement la politique  ces méthodes permettent de contrler lopinion publique et donc dinfluencer le vote lors délections par exemple. l faut noter que larticle  se base uniquement sur les tats-nis, on ne peut donc pas généraliser les propos à linternational. ependant, larticle définit ce terme de manière détaillée avec la liste des actions possibles contre la diffusion de ces fake news.
+
+a diffusion des fake news
+apparition dnternet a permis daccentuer la propagation de fausses informations. article  nous apprend que les réseaux sociaux sont un vrai vecteur dinformation à part entière, puisque  des américains sondés en  déclarent sinformer grce à ces technologies. e plus, les individus acceptent plus facilement les informations qui confirment leurs croyances et idéologies ; la répétition de ces informations crée également un effet de familiarité qui accentue la confiance des gens envers linformation. n , ce sont  à  de comptes witter et plus de  millions de comptes acebook qui ont été détectés comme étant des bots transmetteurs de fake news. omme nous le présentent les articles  et , lusage des bots est plébiscité dans ce domaine. eur rle est cependant restreint à la première étape  linitiation de la propagation. ffectivement, lobjectif de ces comptes est de diffuser le plus rapidement possible la fausse information pour toucher un maximum de personnes avant que ces dernières ne soient atteintes par linformation vérifiée. ous pouvons donc comprendre que ces comptes automatisés existent pour devancer la véritable information dans le but de la discréditer auprès des lecteurs finaux. armi les  millions de tweets collectés par les auteurs de larticle  entre  et ,  de leurs auteurs étaient des robots, mais ces derniers publiaient  des messages comportant de la désinformation. et article est pertinent sur le plan quantitatif. l permet de traiter une approche temporelle, structurelle et comportementale et nous présente le rle des bots dans la propagation des fake news. ependant, les données viennent exclusivement de witter ce qui ne permet pas de généraliser la situation aux autres plateformes. e plus, ils nanalysent pas les données des messages qualitativement. article  nous indique également que le contenu des fake news diffère en fonction de la situation et du contexte du pays visé  plus ltat est polarisé, plus il permet une division interne. ette division interne fait diminuer la confiance des citoyens envers les médias, ce qui accentue la perte de repères de ces personnes.
+
+après larticle , la diffusion de linformation par les utilisateurs peut se considérer comme une chane de partage. es auteurs de cet article ont analysé   cascades les chanes de partage dune mme information sur witter réalisées par  millions dutilisateurs entre  et . algré le fait que les messages provenant de bots aient été détectés et écartés de lexpérimentation, la sélection des données ne peut pas tre considérée comme impartiale puisque les résultats dépendent des rumeurs sélectionnées par six fact-checkers. ussi, étendre létude à dautres plateformes permettrait détoffer les résultats. es résultats suggèrent que  des fausses informations sont plus susceptibles dtre publiées que les vraies informations. énéralement, laspect surprenant de ces contenus conus pour faire réagir sollicite les différentes émotions de lhumain, ce qui pousse ce dernier à partager à ses pairs linformation vérolée, bien que le lien de causalité ne soit pas explicite dans létude. ne véritable information, quant à elle, sera moins sensationnelle et fera moins réagir, elle ne sera donc pas autant partagée. es rumeurs politiques sont les éléments dinformation qui se diffusent le plus vite à grande échelle, puisquil sagit dune composante touchant tous les citoyens. 
+
+olitique
+ans une perspective politique et économique traitée par larticle , les fake news peuvent tre comprises comme des contenus intentionnellement faux produits puisquils sont rentables et répondent à une demande idéologique. eur faible cot de production et leur monétisation par la publicité en ligne encouragent leur diffusion, dautant plus que les réseaux sociaux permettent une circulation massive sans filtre éditorial. n ,   des adultes américains déclaraient sinformer via ces plateformes, qui représentaient environ  du trafic des sites de fake news contre  pour les médias traditionnels.ependant, larticle centre son étude sur les tats-nis ainsi que sur une plage temporelle spécifique ce qui nest pas représentatif de la réalité quotidienne. l reste tout de mme approprié car il fournit des chiffres précis sur la diffusion et les audiences et propose une lecture nuancée des effets sur le vote. i lexposition individuelle reste modérée environ  à  fake news vues par adulte , ces contenus contribuent néanmoins à dégrader la qualité de linformation et peuvent perturber le fonctionnement démocratique, en influenant les perceptions et potentiellement les choix électoraux.
+
+n cas particulier traité dans larticle  est la propagande gouvernementale chinoise. n effet, les auteurs ont étudié le contenu de fuites de mails dun bureau de propagande dun district chinois. u total, ce sont   messages qui sont confirmés comme écrits par des commentateurs gouvernementaux, et   posts issus de comptes identifiés comme étant rattachés au gouvernement. algré le fait que larticle se concentre sur le district de anggong, il permet de se rendre compte de lampleur de la diffusion par les chiffres. es résultats indiquent également que ces comptes gouvernementaux nargumentent jamais face aux critiques, et évitent au maximum les sujets controversés   des messages postés par ces comptes peuvent tre considérés comme du cheerleading propagande positive. e type de propagande permet de faire accepter plus facilement les idéologies du gouvernement. es auteurs observent également que parmi les posts et les commentaires postés par ces comptes, très peu darguments politiques ou dattaques contre les critiques ressortent. ls se concentrent uniquement sur linondation des réseaux sociaux avec des messages positifs qui célèbrent les héros nationaux qui ont marqué lhistoire, ou encore des slogans patriotiques appelant à lunité du peuple. après larticle, ces comptes liés au gouvernement publient jusquà  millions de messages par an. es auteurs estiment également quenviron  message ou commentaire sur  est fabriqué et envoyé par cette organisation étatique. a stratégie principale de cette manuvre est donc de détourner lattention et dempcher des mobilisations collectives. outefois, si létude met en évidence lampleur et les mécanismes de cette stratégie, elle ne permet pas den mesurer précisément limpact sur les opinions individuelles ni den évaluer les effets sociaux ou politiques. 
+
+
+
+
+nfluence des fake news, éducation et résilience
+es auteurs de larticle  analysent aussi les facteurs qui influencent la croyance dans les fake news. es individus sont environ   plus susceptibles de croire des informations alignées avec leur idéologie politique biais partisan. éducation, lge et la consommation médiatique sont associés à une meilleure capacité à distinguer le vrai du faux. n revanche, les réseaux sociaux homogènes idéologiquement renforcent la crédulité. es auteurs discutent cependant de limpact potentiel sur lélection  compte tenu de lexposition limitée, les fake news auraient eu un effet négligeable. ar exemple, si une fake news avait le mme effet quune publicité télévisée estimée à , point de pourcentage sur les votes, limpact total serait très faible, bien inférieur à la marge de victoire. es programmes déducation aux médias et à linformation  doivent évoluer afin que la population puisse avoir un regard critique concernant les informations visionnées quotidiennement.
+
+article  nous présente la vulnérabilité des personnes vis-à-vis de la désinformation pro-remlin, dont létude a été réalisée en kraine au cours de lannée . a désinformation et la propagande russes touchent plus aisément les personnes pro-russie, russophones ou dorigine russe. objectif de la ussie étant daffaiblir lkraine, améliorer son image dans lesprit commun est un atout. étude menée étudie si les ukrainiens peuvent distinguer les fake news dans un flot dinformations, et montre quils y parviennent malgré une faible certitude dans leur choix. l sagit justement de lobjectif de la ussie  la désinformation na pas nécessairement vocation à modifier lopinion publique, mais doit plutt déstabiliser les croyances des individus. article  utilise une méthodologie comparative des  études, ce qui renforce la robustesse des résultats. ls relient la désinformation avec la guerre actuelle en kraine et utilisent des informations pré-classés vraies ou fausses. ependant, létude est basée sur lkraine ce qui réduit les possibilités de généralisation à léchelle internationale.
+
+ésilience et mécanismes de détection
+n peut également observer que certains pays sont plus résilients que dautres face à la désinformation. article  analyse donc  démocraties occidentales afin dévaluer la résilience de ces tats, ce qui réduit la généralisation à léchelle mondiale. es résultats montrent que les pays de lurope du nord et de louest ainsi que le anada sont les tats les plus résilients face à la désinformation.  contrario, les tats-nis y sont très sensibles. es auteurs montrent donc quun tat o la polarisation politique est élevée favorise la désinformation et amoindrit la confiance envers les médias. inalement, larticle nous apprend que la résilience se crée principalement via léducation des citoyens, lidentification des fake news se fait donc en premier lieu par les utilisateurs eux-mmes. 
+
+fin de repérer les bots et les fake news, larticle  nous présente différentes méthodes de détection par lanalyse de la donnée. ifférentes catégories de données peuvent tre utilisées  le contenu textuel, les retours des utilisateurs, ou encore le parcours des hyperliens cités dans le contenu étudié. n combinant ces catégories linguistiques et contextuelles et en fournissant ces données à des modèles de machine learning, il est possible de faire de la détection automatique de faux contenu. e deep learning permet mme dextraire automatiquement des caractéristiques plus complexes. autres méthodes existent comme lanalyse des réseaux de propagation, le fact-checking automatisé ou la détection danomalies, mais ces systèmes restent limités par le manque de jeux de données fiables. algré labsence de protocole systématique pour la réalisation de létude peut biaiser certains résultats, mais lanalyse des datasets et limpact des fake news est pertinent et bien décrit. usage de modèles dapprentissage automatique assez anciens propose des performances moindres, mais le fait dutiliser lintelligence artificielle permet dobtenir des résultats différents qui sont intéressants à titre de comparaison. es évolutions technologiques et géopolitiques montrent une évolution de la désinformation vers des formes plus subtilescomme le microciblage comportemental, linfluence algorithmique, et la manipulation par  conversationnelle. l va donc falloir évoluer avec les fake news et développer de nouveaux outils pour les détecter.
+
+t léthique dans linfluence ?
+a lutte informationnelle soulève ainsi des dilemmes éthiques majeurs, notamment concernant les limites de lintervention étatique dans la sphère informationnelle sans porter atteinte à la liberté dexpression. es interventions de la ussie lors de lélection américaine de  pour soutenir onald rump, ainsi que des opérations denvoi de messages frauduleux à des électeurs attribuées à lran lors de lélection de  illustrent un dilemme éthique central  soit ltat utilise la lutte informationnelle pour protéger la démocratie et les citoyens, soit il mobilise ces mmes outils pour influencer et manipuler les populations, au risque de séloigner de ses principes démocratiques. n deuxième dilemme apparat alors  une manipulation de la population de la part de ltat est-elle acceptable et légitime si elle vise à protéger cette dernière, ou bien à préserver la stabilité démocratique ? ette pratique, mme justifiée par un objectif défensif, peut progressivement banaliser des mécanismes de contrle de linformation proches de ceux quelle cherche initialement à combattre.
+
+a détection des campagnes de désinformation repose souvent sur lanalyse massive de données issues des réseaux sociaux, des comportements en ligne ou des interactions entre utilisateurs. i ces dispositifs permettent didentifier plus efficacement les menaces, ils impliquent aussi une surveillance accrue des citoyens. ela soulève une question  jusquo est-il acceptable de collecter et danalyser des données personnelles pour protéger lespace informationnel, sans porter atteinte aux libertés individuelles ?  terme, ce type de pratiques peut fragiliser la confiance des citoyens envers les institutions censées les protéger.
+
+e cas de la hine montre que les outils informationnels peuvent servir à influencer directement ses propres citoyens, tandis que dans le conflit entre la ussie et lkraine, la désinformation apparat comme une arme stratégique, notamment dans un contexte de crise. ela pose une question importante  un tat peut-il utiliser ces moyens sans compromettre sa neutralité, ou risque-t-il de basculer vers des pratiques de propagande, voire dadopter des méthodes déloyales, mme en situation de guerre ?
+
+out au long de notre analyse, nous avons pu observer que les fake news se développent rapidement et font partie de notre quotidien. ous savons quelles seront de plus en plus présentes et invasives, et que lévolution des bots augmentera leur crédibilité. enjeu est désormais de les reconnatre avec plus defficacité pour mieux les contrer. ous avons pu comprendre que lhumain possède cette capacité, mais nest pas capable daffirmer avec certitude son propos. es technologies actuelles et futures permettent de saffranchir de lhumain pour cette tche, notamment avec laide des intelligences artificielles.  lavenir, ces outils seront probablement très pertinents à lavenir pour détecter efficacement la désinformation dans le flux dinformations consulté par les internautes.  linverse, ils permettront également de créer de fausses informations facilement, rapidement et avec une crédibilité accrue. a lutte contre les fake news dépendra donc autant des technologies que de la vigilance des utilisateurs.
+
+
+onclusion
+résumé des résultats
+perspectives dexpansion de létat de lart
+
+
+
+
+
+ibliographie
+our générer ibe  httpswww.thetapad.comtoolsbibtex-generator
+
+
+
+ todolnik   yber hreats as ybrid ctivity gainst the uropean nion.   ....
+ arknett  meets   yber ampaigns and trategic utcomes.   ...
+ gloff  hires   hree ogics of ntegration.   .jogssogab
+ iannopoulos et al.   he andscape of ybrid hreats  onceptual odel.   .
+ ungwirth et al.   ybrid hreats  omprehensive esilience cosystem.   .
+
+
+
+ efenders isrupting dversaries ramework, ataset, and ase tudies of isruptive ounter-yber perations  ason ealey, eil enkins, .. ork    .yon..
+ an s ack nterprise etworks?  ndreas appe, rgen ito    .
+ ramework and principles for active cyber defense  orothy . enning    .j.cose...
+ arnessing the ower of yber efence  eter ampbell, ichael . onahoo    ...
+ yberwarfare connecting the dots in cyber intelligence  anjay oel    ..
+
+
+
+ ow the hinese overnment abricates ocial edia osts for trategic istraction,ing .; an .; oberts .,, citations,.
+ ocial edia and ake ews in the  lection,llcott .; entzkow .,, citations,.jep...
+ he spread of low-credibility content by social bots,hao .; iampaglia ..; arol .; ang ..; lammini .; enczer .,, citations,.s---
+ he science of fake news,azer .; aum .; enkler .; et al.,, citations,.science.aao
+ he spread of true and false news online,osoughi .; oy .; ral .,, citations,.science.aap
+  urvey on ake ews and umour etection echniques,ondielli .; arcelloni .,, citations,.j.ins...
+ esilience to nline isinformation  ramework for ross-ational omparative esearch,umprecht .; sser .; an elst .,, citations,.
+ s pro-remlin isinformation ffective? vidence from kraine,rlich .; arner .,, citations,.
+
+
+
+.  omprend une partie critique 
+haque section doit analyser les travaux, pas seulement les décrire.
+ela implique 
+dire ce que chaque approche apporte,
+identifier ses limites,
+comparer les méthodes entre elles,
+montrer ce qui manque encore dans la littérature.
+est ce qui transforme ton texte en état de lart, pas en simple revue descriptive.
+
+.  e papier se positionne dès la présentation des références 
+ès que tu présentes une source, tu dois montrer ton angle, ton fil directeur.
+xemples 
+ et article est fondateur car il introduit 
+ ette approche est intéressante mais reste limitée à 
+ ette méthode se distingue des précédentes par 
+u ne restes jamais neutre  tu situes chaque référence dans ton raisonnement.
+.  répare la partie finale de perspectives 
+a critique que tu fais dans chaque partie doit conduire naturellement à la conclusion et aux perspectives.
+utrement dit 
+les limites que tu soulèves  deviennent des verrous scientifiques,
+les tendances que tu observes  deviennent des pistes futures,
+les manques identifiés  deviennent des perspectives crédibles.
+u construis progressivement la conclusion tout au long du texte.
+
+ajout possible 
+
+a  sappuie sur la compréhension fine des mécanismes cognitifs humains. es opérations dinfluence exploitent les biais de perception, la surcharge informationnelle et les émotions pour orienter les comportements collectifs. es adversaires cherchent à créer un climat de doute ou de méfiance envers les institutions, en jouant sur la peur ou lindignation. ette approche souligne la nécessité pour ltat de renforcer la résilience cognitive de la population éducation à lesprit critique, culture de la vérification et sensibilisation aux manipulations informationnelles.
+
+es technologies numériques constituent le vecteur principal des opérations de . es algorithmes de recommandation amplifient la diffusion des contenus polarisants, tandis que les  génératives et les deepfakes brouillent la frontière entre vrai et faux. automatisation de la production de désinformation permet une diffusion massive et ciblée. ette évolution impose une réflexion sur la régulation algorithmique et la traabilité des contenus, afin de préserver la fiabilité de lespace informationnel.
+
+a  sinscrit dans une logique de puissance non cinétique influencer sans combattre. es tats et acteurs non étatiques lutilisent pour affaiblir la cohésion interne dun adversaire ou légitimer leurs actions sur la scène internationale. ans le contexte européen, la  devient un enjeu de souveraineté informationnelle, nécessitant une coordination entre les dispositifs de  offensive et  défensive. analyse des stratégies adverses notamment russes et chinoises éclaire la manière dont la guerre de linformation sintègre aux conflits hybrides contemporains.
+
+a lutte informationnelle soulève des dilemmes éthiques majeurs jusquo un tat peut-il intervenir dans la sphère informationnelle sans menacer la liberté dexpression? a frontière entre contreinfluence légitime et propagande institutionnelle reste ténue. encadrement juridique des opérations dinfluence doit garantir la transparence et la proportionnalité des actions menées, tout en préservant les valeurs démocratiques. ette réflexion ouvre la voie à une doctrine éthique de la , conciliant sécurité et intégrité du débat public.
+
+nfin, la  interroge la cohésion sociale et la confiance institutionnelle. es campagnes de désinformation visent à fragmenter la société, à opposer les citoyens et à délégitimer les autorités. a réponse doit tre collective médias, institutions, chercheurs et citoyens doivent coopérer pour restaurer un espace informationnel sain. e développement de cellules de veille et de communication stratégique permet de détecter, analyser et neutraliser les narratifs hostiles avant quils ne senracinent.
+
+a  ne se limite pas à la diffusion de messages elle sinscrit dans une doctrine daction coordonnée entre acteurs civils et militaires. es opérations dinfluence doivent tre planifiées, mesurées et évaluées selon des indicateurs précis portée, engagement, changement de perception. intégration de la  dans la doctrine de cyberdéfense franaise implique une synergie entre la communication stratégique, la guerre psychologique et la cybersécurité, afin dassurer une réponse cohérente aux menaces hybrides.
+
+étude de la  nécessite une approche interdisciplinaire psychologie sociale, science des données, communication politique et intelligence artificielle. es méthodes de cartographie des narratifs et danalyse sémantique permettent de détecter les réseaux dinfluence et les points de vulnérabilité. intégration de modèles de machine learning pour la détection de désinformation ouvre la voie à une veille proactive, capable danticiper les campagnes hostiles avant leur diffusion massive.
+
+a lutte contre linfluence passe aussi par la formation des citoyens. e développement dune culture informationnelle, fondée sur la vérification, la contextualisation et la compréhension des mécanismes de manipulation, constitue une défense durable. es programmes déducation aux médias et à linformation  doivent évoluer vers une éducation à la résilience cognitive, intégrant les enjeux de sécurité nationale et de souveraineté numérique. à ajouter dans le chapitre éducation
+
+es évolutions technologiques et géopolitiques annoncent une mutation de la  vers des formes plus subtiles microciblage comportemental, influence algorithmique, et manipulation par  conversationnelle.a ajouter dans le chapitre éducation tat doit anticiper ces transformations en développant des capacités danalyse prédictive et des protocoles de réponse adaptatifs. a prospective en  vise à concevoir une défense informationnelle agile, capable de sadapter à la vitesse des mutations numériques.
+
+nfin, la  doit tre envisagée comme un pilier transversal de la cyberdéfense, articulé avec la  et la . efficacité repose sur la coordination entre les trois luttes offensive, défensive et informationnelle. ette approche intégrée permet de protéger lespace cognitif national, tout en garantissant la cohérence des actions de communication, de contreinfluence et de cybersécurité.
+
+
+ilemmes éthiques identifiables
+iberté dexpression vs lutte contre la désinformation
+ ntervenir pour supprimer ou limiter des contenus peut protéger la société, mais risque aussi de censurer des opinions légitimes.
+érité vs manipulation stratégique
+ a lutte contre linfluence peut elle-mme utiliser des techniques dinfluence, ce qui pose la question  peut-on manipuler pour le bien ?
+urveillance des populations vs respect de la vie privée
+ analyse des données, des comportements et des réseaux implique une collecte massive dinformations sur les utilisateurs.
+utomatisation , bots vs responsabilité humaine
+ usage dalgorithmes pour détecter ou contrer les fake news pose la question de la responsabilité en cas derreur ou de biais.
+eutralité de ltat vs propagande
+ es exemples de propagande gouvernementale montrent que les tats peuvent utiliser ces outils pour manipuler leur propre population.
+rotection de la démocratie vs influence électorale
+ es actions contre la désinformation peuvent elles-mmes influencer les résultats politiques ou tre instrumentalisées.
+soit on oeuvre pour préserver la démocratie, soit on accepte que des fausses informations circulent tant quelles sont bénéfiques pour un parti plutt quun autre
+iais cognitifs exploités vs autonomie individuelle
+ xploiter les émotions ou croyances des individus mme pour contrer un adversaire remet en question leur libre arbitre.
+négalités face à linformation éducation, vulnérabilité
+ ertains groupes sont plus exposés ou vulnérables, ce qui pose un problème déquité dans laccès à une information fiable.
+ransparence des plateformes vs intérts économiques
+ es réseaux sociaux profitent de la viralité, y compris des fake news, ce qui entre en tension avec leur responsabilité sociétale.
+fficacité des mesures vs risques de dérive
+ es outils de détection ou de contrle peuvent tre efficaces, mais aussi détournés à des fins politiques ou autoritaires.
+
+nfin, la question de la neutralité de ltat est centrale, comme lillustre le cas de la hine, o les outils informationnels servent aussi à influencer sa propre population, ou encore celui du conflit entre la ussie et lkraine, o la désinformation peut tre perue comme une arme asymétrique, particulièrement dans un contexte de crise, soulevant la question de pratiques potentiellement déloyales mme en situation de guerre.
+e dilemme est particulièrement visible dans des régimes comme celui de la hine, o linfluence exercée sur la population nationale sappuie sur une combinaison de censure, de surveillance et de production massive de contenus orientés. 
+
+a lutte informationnelle soulève ainsi des dilemmes éthiques majeurs, notamment concernant les limites de lintervention étatique dans la sphère informationnelle sans porter atteinte à la liberté dexpression. es interventions de la ussie lors de lélection américaine de  pour soutenir onald rump, ainsi que des opérations denvoi de messages frauduleux à des électeurs attribuées à lran lors de lélection de  illustrent un dilemme éthique central  soit ltat utilise la lutte informationnelle pour protéger la démocratie et les citoyens, soit il mobilise ces mmes outils pour influencer et manipuler les populations, au risque de séloigner de ses principes démocratiques. n deuxième dilemme apparat alors  une manipulation de la population de la part de ltat est-elle acceptable et légitime si elle vise à protéger cette dernière, ou bien à préserver la stabilité démocratique ? ette pratique, mme justifiée par un objectif défensif, peut progressivement banaliser des mécanismes de contrle de linformation proches de ceux quelle cherche initialement à combattre.
+a détection des campagnes de désinformation repose souvent sur lanalyse massive de données issues des réseaux sociaux, des comportements en ligne ou des interactions entre utilisateurs. i ces dispositifs permettent didentifier plus efficacement les menaces, ils impliquent aussi une surveillance accrue des citoyens. ela soulève une question  jusquo est-il acceptable de collecter et danalyser des données personnelles pour protéger lespace informationnel, sans porter atteinte aux libertés individuelles ?  terme, ce type de pratiques peut fragiliser la confiance des citoyens envers les institutions censées les protéger.
+e cas de la hine montre que les outils informationnels peuvent servir à influencer directement ses propres citoyens, tandis que dans le conflit entre la ussie et lkraine, la désinformation apparat comme une arme stratégique, notamment dans un contexte de crise. ela pose une question importante  un tat peut-il utiliser ces moyens sans compromettre sa neutralité, ou risque-t-il de basculer vers des pratiques de propagande, voire dadopter des méthodes déloyales, mme en situation de guerre ?
+
+

@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 import argparse
-from huffnode import HuffNode
-from priorityqueue import PriorityQueue
+from HuffNode import HuffNode
+from PriorityQueue import PriorityQueue
 
 freq = {"a":7, "b":1, "c":3, "d":4, "e":12, "f":1, "g":1, "h":1, "i":6, "j":0, 
         "k":0, "l":5, "m":3, "n":6, "o":5, "p":2, "q":0, "r":6, "s":6, "t":6, 

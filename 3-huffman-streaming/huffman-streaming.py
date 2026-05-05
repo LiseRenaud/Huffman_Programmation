@@ -8,13 +8,13 @@ import argparse
 # ---------------------------------------------------------
 
 class Node:
-    def __init__(self, char=None, weight=0, parent=None, order=0):
-        self.char = char
+    def __init__(self, symbol=None, weight=0, parent=None, order=0):
+        self.symbol = symbol  # int (0-255) ou None
         self.weight = weight
         self.parent = parent
         self.left = None
         self.right = None
-        self.order = order  # important pour FGK
+        self.order = order
 
     def is_leaf(self):
         return self.left is None and self.right is None
@@ -29,9 +29,8 @@ class AdaptiveHuffman:
         self.max_order = 512
         self.root = Node(order=self.max_order)
         self.NYT = self.root
-        self.nodes = {}  # char -> node
+        self.nodes = {}  # byte -> node
 
-    # ---------------------------------
     def get_code(self, node):
         code = ""
         while node.parent:
@@ -42,7 +41,6 @@ class AdaptiveHuffman:
             node = node.parent
         return code
 
-    # ---------------------------------
     def find_highest_node(self, weight):
         result = None
 
@@ -59,7 +57,6 @@ class AdaptiveHuffman:
         traverse(self.root)
         return result
 
-    # ---------------------------------
     def swap(self, n1, n2):
         if n1 == n2 or n1.parent == n2 or n2.parent == n1:
             return
@@ -79,7 +76,6 @@ class AdaptiveHuffman:
         n1.parent, n2.parent = p2, p1
         n1.order, n2.order = n2.order, n1.order
 
-    # ---------------------------------
     def update(self, node):
         while node:
             highest = self.find_highest_node(node.weight)
@@ -89,10 +85,9 @@ class AdaptiveHuffman:
             node.weight += 1
             node = node.parent
 
-    # ---------------------------------
-    def add_new_char(self, char):
+    def add_new_symbol(self, symbol):
         new_internal = Node(weight=0, order=self.NYT.order)
-        new_leaf = Node(char=char, weight=0, order=self.NYT.order - 1)
+        new_leaf = Node(symbol=symbol, weight=0, order=self.NYT.order - 1)
 
         new_internal.left = self.NYT
         new_internal.right = new_leaf
@@ -110,34 +105,30 @@ class AdaptiveHuffman:
         self.NYT.parent = new_internal
         new_leaf.parent = new_internal
 
-        self.nodes[char] = new_leaf
+        self.nodes[symbol] = new_leaf
         self.NYT.order -= 2
 
         return new_leaf
 
-# ---------------------------------------------------------
-# Affichage binaire (debug)
-# ---------------------------------------------------------
-
-def bits_of_bytes(data):
-    return " ".join(f"{b:08b}" for b in data)
 
 # ---------------------------------------------------------
 # Compression
 # ---------------------------------------------------------
 
 def encrypt(text):
+    data = text.encode("utf-8")  # ✅ conversion en bytes
+
     tree = AdaptiveHuffman()
     bits = ""
 
-    for char in text:
-        if char in tree.nodes:
-            node = tree.nodes[char]
+    for byte in data:
+        if byte in tree.nodes:
+            node = tree.nodes[byte]
             bits += tree.get_code(node)
         else:
             bits += tree.get_code(tree.NYT)
-            bits += f"{ord(char):08b}"
-            node = tree.add_new_char(char)
+            bits += f"{byte:08b}"
+            node = tree.add_new_symbol(byte)
 
         tree.update(node)
 
@@ -145,23 +136,11 @@ def encrypt(text):
     padding = (8 - len(bits) % 8) % 8
     bits += "0" * padding
 
-    print("\n--- COMPRESSION ---")
-    print("Bits avant padding :", bits[:-padding] if padding else bits)
-    print("Padding ajouté :", padding)
-
-    # header padding
+    # stocker padding (8 bits au début)
     header = f"{padding:08b}"
     bits = header + bits
 
-    print("Header (padding) :", header)
-    print("Bits finaux :", bits)
-
-    data = int(bits, 2).to_bytes(len(bits) // 8, "big")
-
-    print("Bytes :", bits_of_bytes(data))
-    print("-------------------\n")
-
-    return data
+    return int(bits, 2).to_bytes(len(bits) // 8, "big")
 
 
 # ---------------------------------------------------------
@@ -171,33 +150,23 @@ def encrypt(text):
 def decrypt(data):
     bits = "".join(f"{b:08b}" for b in data)
 
-    print("\n--- DECOMPRESSION ---")
-    print("Bytes lus :", bits_of_bytes(data))
-    print("Bits bruts :", bits)
-
     # lire padding
     padding = int(bits[:8], 2)
     bits = bits[8:]
 
-    print("Padding :", padding)
-
     if padding > 0:
         bits = bits[:-padding]
 
-    print("Bits utiles :", bits)
-    print("---------------------\n")
-
     tree = AdaptiveHuffman()
-    result = ""
+    result_bytes = []
 
     i = 0
     while i < len(bits):
         node = tree.root
 
-        # descendre dans l'arbre
         while not node.is_leaf():
             if i >= len(bits):
-                return result
+                break
             bit = bits[i]
             i += 1
             node = node.left if bit == "0" else node.right
@@ -205,16 +174,16 @@ def decrypt(data):
         if node == tree.NYT:
             if i + 8 > len(bits):
                 break
-            char = chr(int(bits[i:i+8], 2))
+            byte = int(bits[i:i+8], 2)
             i += 8
-            result += char
-            node = tree.add_new_char(char)
+            result_bytes.append(byte)
+            node = tree.add_new_symbol(byte)
         else:
-            result += node.char
+            result_bytes.append(node.symbol)
 
         tree.update(node)
 
-    return result
+    return bytes(result_bytes).decode("utf-8")
 
 
 # ---------------------------------------------------------
