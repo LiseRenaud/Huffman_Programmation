@@ -115,6 +115,12 @@ class AdaptiveHuffman:
 
         return new_leaf
 
+# ---------------------------------------------------------
+# Affichage binaire (debug)
+# ---------------------------------------------------------
+
+def bits_of_bytes(data):
+    return " ".join(f"{b:08b}" for b in data)
 
 # ---------------------------------------------------------
 # Compression
@@ -139,11 +145,23 @@ def encrypt(text):
     padding = (8 - len(bits) % 8) % 8
     bits += "0" * padding
 
-    # ajouter 8 bits au début pour stocker padding
+    print("\n--- COMPRESSION ---")
+    print("Bits avant padding :", bits[:-padding] if padding else bits)
+    print("Padding ajouté :", padding)
+
+    # header padding
     header = f"{padding:08b}"
     bits = header + bits
 
-    return int(bits, 2).to_bytes(len(bits) // 8, "big")
+    print("Header (padding) :", header)
+    print("Bits finaux :", bits)
+
+    data = int(bits, 2).to_bytes(len(bits) // 8, "big")
+
+    print("Bytes :", bits_of_bytes(data))
+    print("-------------------\n")
+
+    return data
 
 
 # ---------------------------------------------------------
@@ -153,13 +171,21 @@ def encrypt(text):
 def decrypt(data):
     bits = "".join(f"{b:08b}" for b in data)
 
+    print("\n--- DECOMPRESSION ---")
+    print("Bytes lus :", bits_of_bytes(data))
+    print("Bits bruts :", bits)
+
     # lire padding
     padding = int(bits[:8], 2)
     bits = bits[8:]
 
-    # retirer bits inutiles à la fin
+    print("Padding :", padding)
+
     if padding > 0:
         bits = bits[:-padding]
+
+    print("Bits utiles :", bits)
+    print("---------------------\n")
 
     tree = AdaptiveHuffman()
     result = ""
