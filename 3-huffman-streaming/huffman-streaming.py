@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 
 import argparse
+from collections import defaultdict
+import time
 
 # ---------------------------------------------------------
 # Node
@@ -9,7 +11,7 @@ import argparse
 
 class Node:
     def __init__(self, symbol=None, weight=0, parent=None, order=0):
-        self.symbol = symbol  # int (0-255) ou None
+        self.symbol = symbol
         self.weight = weight
         self.parent = parent
         self.left = None
@@ -21,7 +23,7 @@ class Node:
 
 
 # ---------------------------------------------------------
-# Adaptive Huffman (FGK)
+# Adaptive Huffman FGK optimisé
 # ---------------------------------------------------------
 
 class AdaptiveHuffman:
@@ -29,34 +31,33 @@ class AdaptiveHuffman:
         self.max_order = 512
         self.root = Node(order=self.max_order)
         self.NYT = self.root
-        self.nodes = {}  # byte -> node
+        self.nodes = {}
 
+        # 🔥 OPTIMISATION MAJEURE : blocs par poids
+        self.blocks = defaultdict(set)
+
+        self.blocks[0].add(self.root)
+
+    # -----------------------------------------------------
     def get_code(self, node):
-        code = ""
+        code = []
         while node.parent:
-            if node.parent.left == node:
-                code = "0" + code
-            else:
-                code = "1" + code
+            code.append("0" if node.parent.left == node else "1")
             node = node.parent
-        return code
+        return "".join(reversed(code))
 
-    def find_highest_node(self, weight):
-        result = None
+    # -----------------------------------------------------
+    def update_blocks(self, node, old_weight, new_weight):
+        if node in self.blocks[old_weight]:
+            self.blocks[old_weight].remove(node)
+        self.blocks[new_weight].add(node)
 
-        def traverse(node):
-            nonlocal result
-            if node is None:
-                return
-            if node.weight == weight:
-                if result is None or node.order > result.order:
-                    result = node
-            traverse(node.left)
-            traverse(node.right)
+    # -----------------------------------------------------
+    def find_highest_in_block(self, weight):
+        # prend le node avec ordre max dans le bloc
+        return max(self.blocks[weight], key=lambda n: n.order)
 
-        traverse(self.root)
-        return result
-
+    # -----------------------------------------------------
     def swap(self, n1, n2):
         if n1 == n2 or n1.parent == n2 or n2.parent == n1:
             return
@@ -76,15 +77,25 @@ class AdaptiveHuffman:
         n1.parent, n2.parent = p2, p1
         n1.order, n2.order = n2.order, n1.order
 
+    # -----------------------------------------------------
     def update(self, node):
         while node:
-            highest = self.find_highest_node(node.weight)
+            old_weight = node.weight
+
+            # 🔥 O(1) amorti lookup
+            highest = self.find_highest_in_block(node.weight)
+
             if highest and highest != node and highest != node.parent:
                 self.swap(node, highest)
 
             node.weight += 1
+
+            # mise à jour des blocs
+            self.update_blocks(node, old_weight, node.weight)
+
             node = node.parent
 
+    # -----------------------------------------------------
     def add_new_symbol(self, symbol):
         new_internal = Node(weight=0, order=self.NYT.order)
         new_leaf = Node(symbol=symbol, weight=0, order=self.NYT.order - 1)
@@ -106,6 +117,11 @@ class AdaptiveHuffman:
         new_leaf.parent = new_internal
 
         self.nodes[symbol] = new_leaf
+
+        # blocs
+        self.blocks[0].add(new_internal)
+        self.blocks[0].add(new_leaf)
+
         self.NYT.order -= 2
 
         return new_leaf
@@ -116,27 +132,27 @@ class AdaptiveHuffman:
 # ---------------------------------------------------------
 
 def encrypt(text):
-    data = text.encode("utf-8")  # ✅ conversion en bytes
+    data = text.encode("utf-8")
 
     tree = AdaptiveHuffman()
-    bits = ""
+    bits = []
 
     for byte in data:
         if byte in tree.nodes:
             node = tree.nodes[byte]
-            bits += tree.get_code(node)
+            bits.append(tree.get_code(node))
         else:
-            bits += tree.get_code(tree.NYT)
-            bits += f"{byte:08b}"
+            bits.append(tree.get_code(tree.NYT))
+            bits.append(f"{byte:08b}")
             node = tree.add_new_symbol(byte)
 
         tree.update(node)
 
-    # padding
+    bits = "".join(bits)
+
     padding = (8 - len(bits) % 8) % 8
     bits += "0" * padding
 
-    # stocker padding (8 bits au début)
     header = f"{padding:08b}"
     bits = header + bits
 
@@ -150,30 +166,26 @@ def encrypt(text):
 def decrypt(data):
     bits = "".join(f"{b:08b}" for b in data)
 
-    # lire padding
     padding = int(bits[:8], 2)
     bits = bits[8:]
 
-    if padding > 0:
+    if padding:
         bits = bits[:-padding]
 
     tree = AdaptiveHuffman()
     result_bytes = []
 
     i = 0
+
     while i < len(bits):
         node = tree.root
 
         while not node.is_leaf():
-            if i >= len(bits):
-                break
             bit = bits[i]
             i += 1
             node = node.left if bit == "0" else node.right
 
         if node == tree.NYT:
-            if i + 8 > len(bits):
-                break
             byte = int(bits[i:i+8], 2)
             i += 8
             result_bytes.append(byte)
@@ -191,29 +203,44 @@ def decrypt(data):
 # ---------------------------------------------------------
 
 def main():
-    parser = argparse.ArgumentParser(description="Huffman Streaming (Adaptive)")
+    parser = argparse.ArgumentParser(description="Optimized Huffman Streaming (FGK)")
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("-e", "--encrypt", action="store_true")
     group.add_argument("-d", "--decrypt", action="store_true")
 
-    parser.add_argument("input_path", type=str)
-    parser.add_argument("-o", "--output", type=str, required=True)
+    parser.add_argument("input_path")
+    parser.add_argument("-o", "--output", required=True)
 
     args = parser.parse_args()
+
+    start_time = time.perf_counter()  # ⏱️ début chrono
 
     if args.encrypt:
         with open(args.input_path, "r", encoding="utf-8") as f:
             text = f.read()
+
         data = encrypt(text)
+
         with open(args.output, "wb") as f:
             f.write(data)
 
-    elif args.decrypt:
+        mode = "Compression"
+
+    else:
         with open(args.input_path, "rb") as f:
             data = f.read()
+
         text = decrypt(data)
+
         with open(args.output, "w", encoding="utf-8") as f:
             f.write(text)
+
+        mode = "Décompression"
+
+    end_time = time.perf_counter()  # ⏱️ fin chrono
+
+    print(f"\n--- {mode} terminée ---")
+    print(f"Temps d'exécution : {end_time - start_time:.4f} secondes")
 
 
 if __name__ == "__main__":
