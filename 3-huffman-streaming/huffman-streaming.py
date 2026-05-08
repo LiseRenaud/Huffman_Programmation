@@ -33,7 +33,7 @@ class AdaptiveHuffman:
         self.NYT = self.root
         self.nodes = {}
 
-        # 🔥 OPTIMISATION MAJEURE : blocs par poids
+        # optimisation : blocs par poids
         self.blocks = defaultdict(set)
 
         self.blocks[0].add(self.root)
@@ -41,20 +41,26 @@ class AdaptiveHuffman:
     # -----------------------------------------------------
     def get_code(self, node):
         code = []
+
         while node.parent:
-            code.append("0" if node.parent.left == node else "1")
+            if node.parent.left == node:
+                code.append("0")
+            else:
+                code.append("1")
+
             node = node.parent
+
         return "".join(reversed(code))
 
     # -----------------------------------------------------
     def update_blocks(self, node, old_weight, new_weight):
         if node in self.blocks[old_weight]:
             self.blocks[old_weight].remove(node)
+
         self.blocks[new_weight].add(node)
 
     # -----------------------------------------------------
     def find_highest_in_block(self, weight):
-        # prend le node avec ordre max dans le bloc
         return max(self.blocks[weight], key=lambda n: n.order)
 
     # -----------------------------------------------------
@@ -82,7 +88,6 @@ class AdaptiveHuffman:
         while node:
             old_weight = node.weight
 
-            # 🔥 O(1) amorti lookup
             highest = self.find_highest_in_block(node.weight)
 
             if highest and highest != node and highest != node.parent:
@@ -90,7 +95,6 @@ class AdaptiveHuffman:
 
             node.weight += 1
 
-            # mise à jour des blocs
             self.update_blocks(node, old_weight, node.weight)
 
             node = node.parent
@@ -118,13 +122,52 @@ class AdaptiveHuffman:
 
         self.nodes[symbol] = new_leaf
 
-        # blocs
         self.blocks[0].add(new_internal)
         self.blocks[0].add(new_leaf)
 
         self.NYT.order -= 2
 
         return new_leaf
+
+
+# ---------------------------------------------------------
+# Affichage de l'arbre
+# ---------------------------------------------------------
+
+def print_tree(node, prefix="", is_left=True):
+    if node is None:
+        return
+
+    connector = "├── " if is_left else "└── "
+
+    if node.symbol is None:
+        label = f"NYT/INT (w={node.weight}, ord={node.order})"
+    else:
+        try:
+            ch = chr(node.symbol)
+            label = f"'{ch}' ({node.symbol})"
+        except:
+            label = str(node.symbol)
+
+        label += f" [w={node.weight}, ord={node.order}]"
+
+    print(prefix + connector + label)
+
+    if node.left or node.right:
+
+        if node.left:
+            print_tree(
+                node.left,
+                prefix + ("│   " if is_left else "    "),
+                True
+            )
+
+        if node.right:
+            print_tree(
+                node.right,
+                prefix + ("│   " if is_left else "    "),
+                False
+            )
 
 
 # ---------------------------------------------------------
@@ -135,15 +178,19 @@ def encrypt(text):
     data = text.encode("utf-8")
 
     tree = AdaptiveHuffman()
+
     bits = []
 
     for byte in data:
+
         if byte in tree.nodes:
             node = tree.nodes[byte]
             bits.append(tree.get_code(node))
+
         else:
             bits.append(tree.get_code(tree.NYT))
             bits.append(f"{byte:08b}")
+
             node = tree.add_new_symbol(byte)
 
         tree.update(node)
@@ -151,12 +198,16 @@ def encrypt(text):
     bits = "".join(bits)
 
     padding = (8 - len(bits) % 8) % 8
+
     bits += "0" * padding
 
     header = f"{padding:08b}"
+
     bits = header + bits
 
-    return int(bits, 2).to_bytes(len(bits) // 8, "big")
+    compressed = int(bits, 2).to_bytes(len(bits) // 8, "big")
+
+    return compressed, tree
 
 
 # ---------------------------------------------------------
@@ -167,35 +218,49 @@ def decrypt(data):
     bits = "".join(f"{b:08b}" for b in data)
 
     padding = int(bits[:8], 2)
+
     bits = bits[8:]
 
     if padding:
         bits = bits[:-padding]
 
     tree = AdaptiveHuffman()
+
     result_bytes = []
 
     i = 0
 
     while i < len(bits):
+
         node = tree.root
 
         while not node.is_leaf():
+
             bit = bits[i]
             i += 1
-            node = node.left if bit == "0" else node.right
+
+            if bit == "0":
+                node = node.left
+            else:
+                node = node.right
 
         if node == tree.NYT:
-            byte = int(bits[i:i+8], 2)
+
+            byte = int(bits[i:i + 8], 2)
             i += 8
+
             result_bytes.append(byte)
+
             node = tree.add_new_symbol(byte)
+
         else:
             result_bytes.append(node.symbol)
 
         tree.update(node)
 
-    return bytes(result_bytes).decode("utf-8")
+    text = bytes(result_bytes).decode("utf-8")
+
+    return text, tree
 
 
 # ---------------------------------------------------------
@@ -203,44 +268,86 @@ def decrypt(data):
 # ---------------------------------------------------------
 
 def main():
-    parser = argparse.ArgumentParser(description="Optimized Huffman Streaming (FGK)")
+    parser = argparse.ArgumentParser(
+        description="Optimized Huffman Streaming (FGK)"
+    )
+
     group = parser.add_mutually_exclusive_group(required=True)
+
     group.add_argument("-e", "--encrypt", action="store_true")
     group.add_argument("-d", "--decrypt", action="store_true")
 
     parser.add_argument("input_path")
-    parser.add_argument("-o", "--output", required=True)
+
+    parser.add_argument(
+        "-o",
+        "--output",
+        required=True
+    )
 
     args = parser.parse_args()
 
-    start_time = time.perf_counter()  # ⏱️ début chrono
+    # -----------------------------------------------------
+    # START TIMER
+    # -----------------------------------------------------
+
+    start_time = time.perf_counter()
+
+    # -----------------------------------------------------
+    # COMPRESSION
+    # -----------------------------------------------------
 
     if args.encrypt:
+
         with open(args.input_path, "r", encoding="utf-8") as f:
             text = f.read()
 
-        data = encrypt(text)
+        data, tree = encrypt(text)
 
         with open(args.output, "wb") as f:
             f.write(data)
 
         mode = "Compression"
 
+    # -----------------------------------------------------
+    # DECOMPRESSION
+    # -----------------------------------------------------
+
     else:
+
         with open(args.input_path, "rb") as f:
             data = f.read()
 
-        text = decrypt(data)
+        text, tree = decrypt(data)
 
         with open(args.output, "w", encoding="utf-8") as f:
             f.write(text)
 
         mode = "Décompression"
 
-    end_time = time.perf_counter()  # ⏱️ fin chrono
+    # -----------------------------------------------------
+    # END TIMER
+    # -----------------------------------------------------
+
+    end_time = time.perf_counter()
+
+    # -----------------------------------------------------
+    # TEMPS D'EXECUTION
+    # -----------------------------------------------------
 
     print(f"\n--- {mode} terminée ---")
     print(f"Temps d'exécution : {end_time - start_time:.4f} secondes")
+
+    # -----------------------------------------------------
+    # AFFICHAGE ARBRE (hors chrono)
+    # -----------------------------------------------------
+
+    if args.encrypt:
+        print("\n===== ARBRE FINAL APRES COMPRESSION =====")
+    else:
+        print("\n===== ARBRE FINAL APRES DECOMPRESSION =====")
+
+    print_tree(tree.root)
 
 
 if __name__ == "__main__":
