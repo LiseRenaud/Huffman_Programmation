@@ -6,10 +6,6 @@ import time
 from HuffNode import HuffNode
 from PriorityQueue import PriorityQueue
 
-
-# =========================================================
-# DICTIONNAIRE STATIQUE
-# =========================================================
 freq = {
     "a":7, "b":1, "c":3, "d":4, "e":12, "f":1, "g":1, "h":1, "i":6, "j":0,
     "k":0, "l":5, "m":3, "n":6, "o":5, "p":2, "q":0, "r":6, "s":6, "t":6,
@@ -49,9 +45,9 @@ def build_huffman_tree(freqs):
     return pq.pop()
 
 
-# =========================================================
-# GÉNÉRATION DES CODES
-# =========================================================
+#construit la table de code à partir des fréquences de l'arbre de huffman
+#on parcourt l'arbre de manière récursive et on ajoute 0 en allant dans les branches de gauche et 1 dans les branches de droite, 
+#jusqu'à atteindre la fin d'une branche --> une feuille/un caractère auquel on associe le code binaire construit qu'on ajoute à notre table.
 def build_codes(node, prefix="", table=None):
 
     if table is None:
@@ -98,9 +94,8 @@ def print_tree(node, indent=""):
     print_tree(node.right, new_indent)
 
 
-# =========================================================
-# TEXTE -> BITS
-# =========================================================
+# On encode le texte caractère par caractère en utilisant les codes associés via la table des codes.
+# si un caractère n'est pas dans la table alors on encode d'abord un caractère d'échappement puis on encode le caractère en binaire sur 8 bits et on ajoute 
 def encode_text(text, codes):
 
     parts = []
@@ -222,9 +217,8 @@ def bytes_to_bits(data):
     return bits
 
 
-# =========================================================
-# ENCRYPT
-# =========================================================
+# ici encrypt construit l'arbre de Huffman à partir de la able de fréquence, puis construit la table des codes à partir de l'arbre,
+# puis on encode le texte a l'aide de la table des codes
 def encrypt(text):
 
     root = build_huffman_tree(freq)
@@ -235,9 +229,7 @@ def encrypt(text):
     return bits, root
 
 
-# =========================================================
-# DECRYPT
-# =========================================================
+# ici decrypt reconstruit l'arbre depuis la table de fréquence puis on reconstruit le texte à partir des bits et de l'arbre
 def decrypt(bits):
 
     root = build_huffman_tree(freq)
@@ -247,11 +239,9 @@ def decrypt(bits):
     return text, root
 
 
-# =========================================================
-# MAIN
-# =========================================================
 def main():
 
+    # Mise en place des arguments
     parser = argparse.ArgumentParser()
 
     group = parser.add_mutually_exclusive_group(required=True)
@@ -278,11 +268,9 @@ def main():
 
     args = parser.parse_args()
 
-    # =====================================================
-    # COMPRESSION
-    # =====================================================
+    # Si l'option encrypt est choisie alors on lit le fichier d'entrée, puis on encode le texte et on lit le résultat du fichier de sortie
     if args.encrypt:
-
+        #Lancement d'un timer
         start = time.time()
 
         with open(args.input_path, "r", encoding="utf-8") as f:
@@ -296,7 +284,7 @@ def main():
             f.write(binary_data)
 
         end = time.time()
-
+        #Affichage du timer et de l'arbre final
         print("\n--- COMPRESSION TERMINÉE ---")
         print(f"Temps compression : {end - start:.4f} sec")
 
@@ -312,11 +300,9 @@ def main():
         print("\n===== ARBRE FINAL =====")
         print_tree(root)
 
-    # =====================================================
-    # DÉCOMPRESSION
-    # =====================================================
+    # Si l'option decrypt est choisie alors on lit le fichier d'entrée, puis on décode les bits et on lit le résultat du fichier de sortie
     elif args.decrypt:
-
+        #Lancement d'un timer
         start = time.time()
 
         with open(args.input_path, "rb") as f:
@@ -331,6 +317,7 @@ def main():
 
         end = time.time()
 
+        #Affichage du timer et de l'arbre reconstruit
         print("\n--- DÉCOMPRESSION TERMINÉE ---")
         print(f"Temps décompression : {end - start:.4f} sec")
 
