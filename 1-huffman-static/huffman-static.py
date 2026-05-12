@@ -20,19 +20,18 @@ freq = {
 ESC = "§ESC§"
 
 
-# =========================================================
-# ARBRE HUFFMAN
-# =========================================================
+# construit l'arbre de huffman à partir de la table des fréquences, en utilisant une file de priorité pour construire l'arbre de manière efficace
 def build_huffman_tree(freqs):
     pq = PriorityQueue()
-
+    # on ajoute tous les caractères et leurs fréquences à la file de priorité sous forme de nœuds de l'arbre de Huffman
+    # si le caractère existe déjà dans la file de priorité alors on ajoute sa fréquence à celle du nœud existant, sinon on crée un nouveau nœud pour ce caractère et sa fréquence
     for ch, f in freqs.items():
         pq.push(HuffNode(ch, f), f)
-
+    # 
     while len(pq._queue) > 1:
         n1 = pq.pop()
         n2 = pq.pop()
-
+    # crée le noeud parent avec une fréquence égale à la somme des fréquences des deux noeud extraits
         parent = HuffNode(
             None,
             n1.freq + n2.freq,
@@ -52,42 +51,32 @@ def build_codes(node, prefix="", table=None):
 
     if table is None:
         table = {}
-
     if node.char is not None:
         table[node.char] = prefix or "0"
         return table
-
     if node.left:
         build_codes(node.left, prefix + "0", table)
-
     if node.right:
         build_codes(node.right, prefix + "1", table)
 
     return table
 
 
-# =========================================================
-# AFFICHAGE ARBRE
-# =========================================================
+# affiche l'arbre de huffman
 def print_tree(node, indent=""):
 
     if node is None:
         return
-
+    # affiche la fréquence du nœud et le caractère associé s'il s'agit d'une feuille
     prefix = "├── " if indent else ""
-
     if node.char is not None:
-
         label = node.char
-
         if label == "<sp>":
             label = "space"
-
         print(f"{indent}{prefix}'{label}' (freq={node.freq})")
-
+    # sinon on affiche un astérisque pour les nœuds internes
     else:
         print(f"{indent}{prefix}* (freq={node.freq})")
-
     new_indent = indent + ("│   " if indent else "    ")
 
     print_tree(node.left, new_indent)
@@ -97,11 +86,8 @@ def print_tree(node, indent=""):
 # On encode le texte caractère par caractère en utilisant les codes associés via la table des codes.
 # si un caractère n'est pas dans la table alors on encode d'abord un caractère d'échappement puis on encode le caractère en binaire sur 8 bits et on ajoute 
 def encode_text(text, codes):
-
     parts = []
-
     for c in text:
-
         if c == " ":
             c = "<sp>"
 
@@ -111,27 +97,21 @@ def encode_text(text, codes):
         else:
             # caractère inconnu
             parts.append(codes[ESC])
-
             for b in c.encode("utf-8"):
                 parts.append(format(b, "08b"))
 
     return "".join(parts)
 
 
-# =========================================================
-# BITS -> TEXTE
-# =========================================================
+# on decode les bits en parcourant l'arbre de huffman à partir de la racine, 
+# en suivant les branches de gauche pour les bits 0 et les branches de droite pour les bits 1, jusqu'à atteindre une feuille qui correspond à un caractère,
 def decode_bits(bits, root):
-
     result = []
     node = root
-
     i = 0
-
     while i < len(bits):
 
         node = node.left if bits[i] == "0" else node.right
-
         if node.char is not None:
 
             # espace
@@ -140,15 +120,11 @@ def decode_bits(bits, root):
 
             # caractère UTF-8 inconnu
             elif node.char == ESC:
-
                 byte_list = []
-
                 i += 1
-
                 while i < len(bits):
 
                     chunk = bits[i:i+8]
-
                     if len(chunk) < 8:
                         break
 
@@ -159,36 +135,26 @@ def decode_bits(bits, root):
                         decoded = bytes(byte_list).decode("utf-8")
                         result.append(decoded)
                         break
-
                     except UnicodeDecodeError:
                         continue
-
                 node = root
                 continue
-
             else:
                 result.append(node.char)
-
             node = root
-
         i += 1
 
     return "".join(result)
 
 
-# =========================================================
-# BITS -> OCTETS
-# =========================================================
+# passe la chaine de bits en octets,
 def bits_to_bytes(bits):
 
     padding = (8 - len(bits) % 8) % 8
-
     bits += "0" * padding
-
     data = bytearray()
 
     for i in range(0, len(bits), 8):
-
         byte = bits[i:i+8]
         data.append(int(byte, 2))
 
@@ -196,19 +162,15 @@ def bits_to_bytes(bits):
     return bytes([padding]) + bytes(data)
 
 
-# =========================================================
-# OCTETS -> BITS
-# =========================================================
+# passe les octets du fichier binaire en chaine de bits, et retire les bits du padding à la fin de la chaine de bits.
 def bytes_to_bits(data):
 
     padding = data[0]
     data = data[1:]
-
     parts = []
 
     for b in data:
         parts.append(format(b, "08b"))
-
     bits = "".join(parts)
 
     if padding:
@@ -255,9 +217,9 @@ def main():
 
         with open(args.input_path, "r", encoding="utf-8") as f:
             text = f.read()
-
+        
         bits, root = encrypt(text)
-
+        # on convertit la chaine de bits en données binaires à écrire dans le fichier de sortie
         binary_data = bits_to_bytes(bits)
 
         with open(args.output, "wb") as f:
@@ -287,7 +249,7 @@ def main():
 
         with open(args.input_path, "rb") as f:
             binary_data = f.read()
-
+        #on passe les données binaires du fichier d'entrée en chaine de bits, et on retire le padding à la fin de la chaine de bits
         bits = bytes_to_bits(binary_data)
 
         text, root = decrypt(bits)
