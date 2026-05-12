@@ -220,22 +220,16 @@ def bytes_to_bits(data):
 # ici encrypt construit l'arbre de Huffman à partir de la able de fréquence, puis construit la table des codes à partir de l'arbre,
 # puis on encode le texte a l'aide de la table des codes
 def encrypt(text):
-
     root = build_huffman_tree(freq)
     codes = build_codes(root)
-
     bits = encode_text(text, codes)
-
     return bits, root
 
 
 # ici decrypt reconstruit l'arbre depuis la table de fréquence puis on reconstruit le texte à partir des bits et de l'arbre
 def decrypt(bits):
-
     root = build_huffman_tree(freq)
-
     text = decode_bits(bits, root)
-
     return text, root
 
 
@@ -246,25 +240,11 @@ def main():
 
     group = parser.add_mutually_exclusive_group(required=True)
 
-    group.add_argument(
-        "-e",
-        "--encrypt",
-        action="store_true"
-    )
-
-    group.add_argument(
-        "-d",
-        "--decrypt",
-        action="store_true"
-    )
-
+    group.add_argument("-e","--encrypt",action="store_true")
+    group.add_argument("-d","--decrypt",action="store_true")
+    
     parser.add_argument("input_path")
-
-    parser.add_argument(
-        "-o",
-        "--output",
-        required=True
-    )
+    parser.add_argument("-o","--output",required=True)
 
     args = parser.parse_args()
 
@@ -295,7 +275,7 @@ def main():
 
         print(f"Taille originale : {original_size} octets")
         print(f"Taille compressée : {compressed_size} octets")
-        print(f"Ratio : {ratio:.2f}%")
+        print(f"Ratio : {100-ratio:.2f}%")
 
         print("\n===== ARBRE FINAL =====")
         print_tree(root)
