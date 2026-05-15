@@ -5,10 +5,11 @@ import argparse
 from collections import defaultdict
 import time
 
-# ---------------------------------------------------------
-# Node
-# ---------------------------------------------------------
 
+# classe noeud pour arbre huffman adaptatif, 
+# avec symboles, 
+# poids,
+# liens parent-enfant et ordre pour la gestion des blocs de poids.
 class Node:
     def __init__(self, symbol=None, weight=0, parent=None, order=0):
         self.symbol = symbol
@@ -22,10 +23,8 @@ class Node:
         return self.left is None and self.right is None
 
 
-# ---------------------------------------------------------
-# Adaptive Huffman FGK optimisé
-# ---------------------------------------------------------
-
+# Cette classe implémente l'algorithme de Huffman adaptatif,
+# avec une optimisation basée sur la gestion de blocs de poids pour accélérer les opérations de mise à jour de l'arbre.
 class AdaptiveHuffman:
     def __init__(self):
         self.max_order = 512
@@ -38,7 +37,7 @@ class AdaptiveHuffman:
 
         self.blocks[0].add(self.root)
 
-    # -----------------------------------------------------
+    # obtenir le code binaire d'un noeud en remontant vers la racine
     def get_code(self, node):
         code = []
 
@@ -52,18 +51,18 @@ class AdaptiveHuffman:
 
         return "".join(reversed(code))
 
-    # -----------------------------------------------------
+    # mise à jour des blocs de poids lors de l'incrémentation du poids d'un noeud
     def update_blocks(self, node, old_weight, new_weight):
         if node in self.blocks[old_weight]:
             self.blocks[old_weight].remove(node)
 
         self.blocks[new_weight].add(node)
 
-    # -----------------------------------------------------
+    # trouver le nœud le plus élevé dans un bloc de poids donné
     def find_highest_in_block(self, weight):
         return max(self.blocks[weight], key=lambda n: n.order)
 
-    # -----------------------------------------------------
+    # échanger deux nœuds dans l'arbre
     def swap(self, n1, n2):
         if n1 == n2 or n1.parent == n2 or n2.parent == n1:
             return
@@ -83,7 +82,8 @@ class AdaptiveHuffman:
         n1.parent, n2.parent = p2, p1
         n1.order, n2.order = n2.order, n1.order
 
-    # -----------------------------------------------------
+    # mise à jour de l'arbre après l'ajout d'un symbole ou l'incrémentation du poids d'un nœud,
+    # en utilisant les blocs de poids pour trouver rapidement les nœuds à échanger.
     def update(self, node):
         while node:
             old_weight = node.weight
@@ -99,7 +99,8 @@ class AdaptiveHuffman:
 
             node = node.parent
 
-    # -----------------------------------------------------
+    # ajout d'un nouveau symbole à l'arbre en créant un nouveau nœud interne et une nouvelle feuille pour le symbole,
+    # et en mettant à jour les liens parent-enfant et les blocs de poids.
     def add_new_symbol(self, symbol):
         new_internal = Node(weight=0, order=self.NYT.order)
         new_leaf = Node(symbol=symbol, weight=0, order=self.NYT.order - 1)
@@ -130,10 +131,7 @@ class AdaptiveHuffman:
         return new_leaf
 
 
-# ---------------------------------------------------------
-# Affichage de l'arbre
-# ---------------------------------------------------------
-
+# affichage de l'arbre de huffman de manière structurée, avec des symboles lisibles et les poids associés à chaque nœud.
 def print_tree(node, prefix="", is_left=True):
     if node is None:
         return
@@ -170,10 +168,11 @@ def print_tree(node, prefix="", is_left=True):
             )
 
 
-# ---------------------------------------------------------
-# Compression
-# ---------------------------------------------------------
-
+# la fonction de compression lit le texte d'entrée, 
+# encode chaque caractère en utilisant l'arbre de Huffman adaptatif,
+# et construit une chaîne de bits représentant le texte compressé, 
+# en ajoutant un en-tête pour le padding 
+# et en convertissant la chaîne de bits en bytes pour l'écriture dans un fichier binaire.
 def encrypt(text):
     data = text.encode("utf-8")
 
@@ -209,11 +208,10 @@ def encrypt(text):
 
     return compressed, tree
 
-
-# ---------------------------------------------------------
-# Décompression
-# ---------------------------------------------------------
-
+# fonction de décompression on lit les données compressées, puis on reconstruit l'arbre de Huffman adaptatif en parcourant les bits de la chaîne compressée,
+# on décode chaque symbole en suivant les chemins dans l'arbre,
+# et on reconstruit le texte original à partir des symboles décodés, 
+# en gérant le padding et en convertissant les bytes en texte UTF-8.
 def decrypt(data):
     bits = "".join(f"{b:08b}" for b in data)
 
@@ -263,10 +261,6 @@ def decrypt(data):
     return text, tree
 
 
-# ---------------------------------------------------------
-# CLI
-# ---------------------------------------------------------
-
 def main():
     parser = argparse.ArgumentParser(
         description="Optimized Huffman Streaming (FGK)"
@@ -287,16 +281,14 @@ def main():
 
     args = parser.parse_args()
 
-    # -----------------------------------------------------
-    # START TIMER
-    # -----------------------------------------------------
+    # début du timer
 
     start_time = time.perf_counter()
 
-    # -----------------------------------------------------
-    # COMPRESSION
-    # -----------------------------------------------------
-
+    # si les arguments indiquent une compression, on lit le texte d'entrée, 
+    # on encode chaque caractère en utilisant l'arbre de Huffman adaptatif,
+    # et on construit une chaîne de bits représentant le texte compressé, 
+    # en ajoutant un en-tête pour le padding et en convertissant la chaîne de bits en bytes pour l'écriture dans un fichier binaire.
     if args.encrypt:
 
         with open(args.input_path, "r", encoding="utf-8") as f:
@@ -309,9 +301,11 @@ def main():
 
         mode = "Compression"
 
-    # -----------------------------------------------------
-    # DECOMPRESSION
-    # -----------------------------------------------------
+    # si les arguments indique une décompression, on lit les données compressées,
+    # puis on reconstruit l'arbre de Huffman adaptatif en parcourant les bits de la chaîne compressée, 
+    # on décode chaque symbole en suivant les chemins dans l'arbre,
+    # et on reconstruit le texte original à partir des symboles décodés, 
+    # en gérant le padding et en convertissant les bytes en texte UTF-8, avant de l'écrire dans un fichier texte.
 
     else:
 
@@ -325,22 +319,16 @@ def main():
 
         mode = "Décompression"
 
-    # -----------------------------------------------------
-    # END TIMER
-    # -----------------------------------------------------
+    # fin du timer
 
     end_time = time.perf_counter()
 
-    # -----------------------------------------------------
-    # TEMPS D'EXECUTION
-    # -----------------------------------------------------
+    # temps d'exécution et affichage du mode (compression ou décompression)
 
     print(f"\n--- {mode} terminée ---")
     print(f"Temps d'exécution : {end_time - start_time:.4f} secondes")
 
-    # -----------------------------------------------------
-    # AFFICHAGE ARBRE (hors chrono)
-    # -----------------------------------------------------
+    # affichage de l'arbre de huffman final
 
     if args.encrypt:
         print("\n===== ARBRE FINAL APRES COMPRESSION =====")
